@@ -63,7 +63,7 @@ class Area_palkirController extends Controller
     public function destroy($id): RedirectResponse
     {
         area_palkir::find($id)->delete();
-        return redirect(route('area_palkir.show'));
+        return redirect(route('area_palkir.show'))->with('pesan', 'Data berhasil diHapus');
     }
 }
 

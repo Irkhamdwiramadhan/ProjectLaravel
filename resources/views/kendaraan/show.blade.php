@@ -2,7 +2,7 @@
     <x-slot name="title">Data kendaraan</x-slot>
     <x-slot name="card_title">Daftar kendaraan</x-slot>
     <div>
-        <a href="{{ route('kendaraan.create') }}" class="btn btn-primary">Tambah Jenis</a>
+        <a href="{{ route('kendaraan.create') }}" class="btn btn-primary">Tambah Kendaraan</a>
     </div>
     <table class="table table-sm">
         <thead class="table-primary">
@@ -40,11 +40,20 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-transparant">
-                            <i class="fas fa-trash text-danger"></i></button>
+                            <i class="fas fa-trash text-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data')"></i></button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    @if (session('pesan'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{ session('pesan')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+@endif
 </x-layout>

@@ -16,6 +16,23 @@ class KendaraanController extends Controller
         return view('kendaraan.show', ['list_kendaraan' => $list_kendaraan]);
     }
 
+    public function register(Request $request)
+{
+    $request->validate([
+        'merk' => 'required',
+        'pemilik' => 'required',
+        'nopol' => 'required',
+        'thn_beli' => 'required',
+        'deskripsi' => 'required',
+        'jenis_kendaraan_id' => 'required',
+        'kapasitas_kursi' => 'required',
+        'rating' => 'required',
+    ]);
+
+    kendaraan::create($request->all());
+    return redirect('/')->with('pesan', 'Kendaraan berhasil didaftarkan');
+}
+
     public $timestamps = false;
 
     public function create()
@@ -63,6 +80,6 @@ class KendaraanController extends Controller
     public function destroy($id): RedirectResponse
     {
         kendaraan::find($id)->delete();
-        return redirect(route('kendaraan.show'));
+        return redirect(route('kendaraan.show'))->with('pesan', 'Data berhasil diHapus');
     }
 }

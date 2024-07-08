@@ -67,6 +67,6 @@ class TransaksiController extends Controller
     public function destroy($id): RedirectResponse
     {
         transaksi::find($id)->delete();
-        return redirect(route('transaksi.show'));
+        return redirect(route('transaksi.show'))->with('pesan', 'Data berhasil diHapus');
     }
 }

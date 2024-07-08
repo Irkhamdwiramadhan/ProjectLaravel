@@ -33,11 +33,20 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-transparant">
-                            <i class="fas fa-trash text-danger"></i></button>
+                            <i class="fas fa-trash text-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data')"></i></button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    @if (session('pesan'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{ session('pesan')}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+@endif
 </x-layout>

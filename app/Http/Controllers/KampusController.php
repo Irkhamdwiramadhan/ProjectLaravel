@@ -56,7 +56,7 @@ class KampusController extends Controller
     public function destroy($id): RedirectResponse
     {
        kampus::find($id)->delete();
-        return redirect(route('kampus.show'));
+        return redirect(route('kampus.show'))->with('pesan', 'Data Berhasil Di Hapus');
     }
         
 }
